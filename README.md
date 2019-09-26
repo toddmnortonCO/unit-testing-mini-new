@@ -26,7 +26,7 @@ In this step, we will create the folder and files to hold our test.
 
 - In the src folder create a folder called `__tests__`
   - Jest will automatically run all files in this folder
-- Inside the newly created folder create two files; Counter.test.js and functions.test.js
+- Inside the newly created folder create two files; `Counter.test.js` and `functions.test.js`
 
 ## Step 3
 
@@ -36,11 +36,13 @@ Now we will write our first unit tests! Let's start with our utility functions.
 
 ### Instructions
 
-- In functions.test.js, import the `add` function from utils/functions
+- In `functions.test.js`, import the `add` function
+  - This function can be found in the `../utils/functions` file
 - Create a test that checks whether `add` correctly adds 2 integers together
 - Create a test that checks whether `add` will add a string and number together
 - Lastly, create a test to check if `add` returns NaN if non numbers are passed
 - Once complete, run `npm run test` to check if your unit tests work
+  - Note, it will show that 1 has failed and 3 have passed. This is because our Counter file does not have any tests in it yet. We will fix this shortly
 
 <details>
 
