@@ -83,7 +83,7 @@ Next, we will be testing our React components. There are many ways to test React
   - This counter will initialize at 0. Check the component for the jsx markup
 - Create a second test for `Counter` that checks whether clicking the button actually increments the count
   - There will be two assertions in here. One that checks the text content before clicking and the second for after
-  - Use the fireEvent method to simulate a button click
+  - Use the `fireEvent` method to simulate a button click
   - get the button using the returned method from `render`; `getByTestId` to retrieve the button and store to a variable
 
 <details>
@@ -110,6 +110,15 @@ it('Clicking increments state count', () => {
 ```
 
 </details>
+
+## Step 5
+
+Lastly, we will run our unit tests to make sure our functions and React components are doing what we expect them too.
+
+### Instructions
+
+- run `npm run test`
+  - You should see 5 tests passing
 
 ## Contributions
 
