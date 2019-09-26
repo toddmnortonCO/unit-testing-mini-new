@@ -1,68 +1,122 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="https://s3.amazonaws.com/devmountain/readme-logo.png" width="250" align="right">
 
-## Available Scripts
+# Project Summary
 
-In the project directory, you can run:
+In this project, we'll learn how to unit test JavaScript files and React components using Jest. Jest is a unit testing framework that was developed by Facebook. create-react-app automatically adds jest to any project so you won't need to manually add it, but in any other project that you are spinning up from scratch you will want to install it.
 
-### `npm start`
+<a href="https://jestjs.io/docs/en/getting-started.html">Jest download</a>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Step 1
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Summary
 
-### `npm test`
+In this step we will install React Testing Library which is a utility library that helps us to test our React components.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Instructions
 
-### `npm run build`
+- Run `npm install --save-dev @testing-library/react`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Step 2
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Summary
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In this step, we will create the folder and files to hold our test.
 
-### `npm run eject`
+### Instructions
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- In the src folder create a folder called `__tests__`
+  - Jest will automatically run all files in this folder
+- Inside the newly created folder create two files; Counter.test.js and functions.test.js
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Step 3
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Summary
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Now we will write our first unit tests! Let's start with our utility functions.
 
-## Learn More
+### Instructions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- In functions.test.js, import the `add` function from utils/functions
+- Create a test that checks whether `add` correctly adds 2 integers together
+- Create a test that checks whether `add` will add a string and number together
+- Lastly, create a test to check if `add` returns NaN if non numbers are passed
+- Once complete, run `npm run test` to check if your unit tests work
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<details>
 
-### Code Splitting
+<summary> <code> functions.test.js </code> </summary>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```js
+import { add } from '../utils/functions';
 
-### Analyzing the Bundle Size
+it('add returns the sum of two numbers', () => {
+  expect(add(1, 2)).toBe(3);
+});
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+it('add handles string inputs that are numbers', () => {
+  expect(add('3', '4')).toBe(7);
+});
 
-### Making a Progressive Web App
+it(`add returns NaN if non numbers are passed`, () => {
+  expect(add('hello', 'world')).toBeNaN();
+});
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+</details>
 
-### Advanced Configuration
+## Step 4
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Summary
 
-### Deployment
+Next, we will be testing our React components. There are many ways to test React components, but this will focus exclusively on testing with the Jest framework only.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### Instructions
 
-### `npm run build` fails to minify
+- Open `Counter.test.js` in the `__tests__` folder
+- Import `React`, `render`, `fireEvent` and `Counter`
+  - `React` comes from the `react` package
+  - `render` and `fireEvent` come from the `@testing-library/react` package
+  - `Counter` is in the components folder
+- Create a test for `Counter` that checks the starting text of the p tag
+  - This counter will initialize at 0. Check the component for the jsx markup
+- Create a second test for `Counter` that checks whether clicking the button actually increments the count
+  - There will be two assertions in here. One that checks the text content before clicking and the second for after
+  - Use the fireEvent method to simulate a button click
+  - get the button using the returned method from `render`; `getByTestId` to retrieve the button and store to a variable
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<details>
+
+<summary> <code> Counter.test.js </code> </summary>
+
+```js
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import Counter from '../components/Counter';
+
+it('Renders out starting text', () => {
+  const { container } = render(<Counter />);
+  expect(container.textContent).toContain(`You've clicked 0 times!`);
+});
+
+it('Clicking increments state count', () => {
+  const { getByTestId, container } = render(<Counter />);
+  const button = getByTestId('counter-button');
+  expect(container.textContent).toContain(`You've clicked 0 times!`);
+  fireEvent.click(button);
+  expect(container.textContent).toContain(`You've clicked 1 times!`);
+});
+```
+
+</details>
+
+## Contributions
+
+If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
+
+## Copyright
+
+© DevMountain LLC, 2017. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+
+<p align="center">
+<img src="https://s3.amazonaws.com/devmountain/readme-logo.png" width="250">
+</p>
