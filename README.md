@@ -10,13 +10,24 @@ In this project, we'll learn how to unit test JavaScript files and React compone
 
 ### Summary
 
+Setup
+
+### Instructions
+
+- Fork and clone this repo
+- run `npm i`
+
+## Step 2
+
+### Summary
+
 In this step we will install React Testing Library which is a utility library that helps us to test our React components.
 
 ### Instructions
 
 - Run `npm install --save-dev @testing-library/react`
 
-## Step 2
+## Step 3
 
 ### Summary
 
@@ -28,7 +39,7 @@ In this step, we will create the folder and files to hold our test.
   - Jest will automatically run all files in this folder
 - Inside the newly created folder create two files; `Counter.test.js` and `functions.test.js`
 
-## Step 3
+## Step 4
 
 ### Summary
 
@@ -66,7 +77,7 @@ it(`add returns NaN if non numbers are passed`, () => {
 
 </details>
 
-## Step 4
+## Step 5
 
 ### Summary
 
@@ -111,7 +122,7 @@ it('Clicking increments state count', () => {
 
 </details>
 
-## Step 5
+## Step 6
 
 Lastly, we will run our unit tests to make sure our functions and React components are doing what we expect them too.
 
