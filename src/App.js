@@ -1,12 +1,10 @@
 import React from 'react';
-import Counter from './components/Counter'
-import AddNumbers from './components/AddNumbers'
+import Counter from './components/Counter';
 
 function App() {
   return (
     <div className="App">
-      <Counter/>
-      <AddNumbers/>
+      <Counter />
     </div>
   );
 }

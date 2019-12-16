@@ -10,25 +10,38 @@ In this project, we'll learn how to unit test JavaScript files and React compone
 
 ### Summary
 
+Setup
+
+### Instructions
+
+- Fork and clone this repo
+- run `npm i`
+
+## Step 2
+
+### Summary
+
 In this step we will install React Testing Library which is a utility library that helps us to test our React components.
 
 ### Instructions
 
 - Run `npm install --save-dev @testing-library/react`
 
-## Step 2
+Note: <b>In newer versions of create-react-app, you will not need to install this manually.</b>
+
+## Step 3
 
 ### Summary
 
-In this step, we will create the folder and files to hold our test.
+In this step, we will create the folder and a file for our unit test.
 
 ### Instructions
 
 - In the src folder create a folder called `__tests__`
   - Jest will automatically run all files in this folder
-- Inside the newly created folder create two files; Counter.test.js and functions.test.js
+- Inside the newly created folder create the file `functions.test.js`
 
-## Step 3
+## Step 4
 
 ### Summary
 
@@ -36,10 +49,12 @@ Now we will write our first unit tests! Let's start with our utility functions.
 
 ### Instructions
 
-- In functions.test.js, import the `add` function from utils/functions
+- In `functions.test.js`, import the `add` function
+  - This function can be found in the `../utils/functions` file
 - Create a test that checks whether `add` correctly adds 2 integers together
 - Create a test that checks whether `add` will add a string and number together
 - Lastly, create a test to check if `add` returns NaN if non numbers are passed
+  - Hint: check the jest documentation for a matcher that might be helpful with NaN
 - Once complete, run `npm run test` to check if your unit tests work
 
 <details>
@@ -49,22 +64,22 @@ Now we will write our first unit tests! Let's start with our utility functions.
 ```js
 import { add } from '../utils/functions';
 
-it('add returns the sum of two numbers', () => {
+test('add returns the sum of two numbers', () => {
   expect(add(1, 2)).toBe(3);
 });
 
-it('add handles string inputs that are numbers', () => {
+test('add handles string inputs that are numbers', () => {
   expect(add('3', '4')).toBe(7);
 });
 
-it(`add returns NaN if non numbers are passed`, () => {
+test(`add returns NaN if non numbers are passed`, () => {
   expect(add('hello', 'world')).toBeNaN();
 });
 ```
 
 </details>
 
-## Step 4
+## Step 5
 
 ### Summary
 
@@ -72,6 +87,7 @@ Next, we will be testing our React components. There are many ways to test React
 
 ### Instructions
 
+- create a file called `Counter.test.js` in the `src/__tests__` folder.
 - Open `Counter.test.js` in the `__tests__` folder
 - Import `React`, `render`, `fireEvent` and `Counter`
   - `React` comes from the `react` package
@@ -81,7 +97,7 @@ Next, we will be testing our React components. There are many ways to test React
   - This counter will initialize at 0. Check the component for the jsx markup
 - Create a second test for `Counter` that checks whether clicking the button actually increments the count
   - There will be two assertions in here. One that checks the text content before clicking and the second for after
-  - Use the fireEvent method to simulate a button click
+  - Use the `fireEvent` method to simulate a button click
   - get the button using the returned method from `render`; `getByTestId` to retrieve the button and store to a variable
 
 <details>
@@ -108,6 +124,15 @@ it('Clicking increments state count', () => {
 ```
 
 </details>
+
+## Step 6
+
+Lastly, we will run our unit tests to make sure our functions and React components are doing what we expect them too.
+
+### Instructions
+
+- run `npm run test`
+  - You should see 5 tests passing
 
 ## Contributions
 
