@@ -39,7 +39,7 @@ In this step, we will create the folder and a file for our unit test.
 
 - In the src folder create a folder called `__tests__`
   - Jest will automatically run all files in this folder
-- Inside the newly created folder create two files; `functions.test.js`
+- Inside the newly created folder create the file `functions.test.js`
 
 ## Step 4
 
