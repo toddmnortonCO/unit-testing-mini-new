@@ -27,17 +27,19 @@ In this step we will install React Testing Library which is a utility library th
 
 - Run `npm install --save-dev @testing-library/react`
 
+Note: <b>In newer versions of create-react-app, you will not need to install this manually.</b>
+
 ## Step 3
 
 ### Summary
 
-In this step, we will create the folder and files to hold our test.
+In this step, we will create the folder and a file for our unit test.
 
 ### Instructions
 
 - In the src folder create a folder called `__tests__`
   - Jest will automatically run all files in this folder
-- Inside the newly created folder create two files; `Counter.test.js` and `functions.test.js`
+- Inside the newly created folder create the file `functions.test.js`
 
 ## Step 4
 
@@ -52,8 +54,8 @@ Now we will write our first unit tests! Let's start with our utility functions.
 - Create a test that checks whether `add` correctly adds 2 integers together
 - Create a test that checks whether `add` will add a string and number together
 - Lastly, create a test to check if `add` returns NaN if non numbers are passed
+  - Hint: check the jest documentation for a matcher that might be helpful with NaN
 - Once complete, run `npm run test` to check if your unit tests work
-  - Note, it will show that 1 has failed and 3 have passed. This is because our Counter file does not have any tests in it yet. We will fix this shortly
 
 <details>
 
@@ -62,15 +64,15 @@ Now we will write our first unit tests! Let's start with our utility functions.
 ```js
 import { add } from '../utils/functions';
 
-it('add returns the sum of two numbers', () => {
+test('add returns the sum of two numbers', () => {
   expect(add(1, 2)).toBe(3);
 });
 
-it('add handles string inputs that are numbers', () => {
+test('add handles string inputs that are numbers', () => {
   expect(add('3', '4')).toBe(7);
 });
 
-it(`add returns NaN if non numbers are passed`, () => {
+test(`add returns NaN if non numbers are passed`, () => {
   expect(add('hello', 'world')).toBeNaN();
 });
 ```
@@ -85,6 +87,7 @@ Next, we will be testing our React components. There are many ways to test React
 
 ### Instructions
 
+- create a file called `Counter.test.js` in the `src/__tests__` folder.
 - Open `Counter.test.js` in the `__tests__` folder
 - Import `React`, `render`, `fireEvent` and `Counter`
   - `React` comes from the `react` package
